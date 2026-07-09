@@ -1,0 +1,1755 @@
+<!DOCTYPE html>
+<html lang="ko" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>김세린 | 진로 포트폴리오 (행사 기획자 & 경영학도)</title>
+    <meta name="description" content="경영학과 행사 기획자를 꿈꾸는 고등학교 2학년 김세린의 진로 포트폴리오 웹사이트입니다.">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;800&family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    
+    <!-- Lucide Icons (CDN) -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <style>
+        /* CSS Reset & Theme Variables */
+        :root {
+            --gold-primary: #d4af37;
+            --gold-light: #f3e7c4;
+            --gold-dark: #aa7c11;
+            --gold-gradient: linear-gradient(135deg, #f3e7c4 0%, #d4af37 50%, #b8860b 100%);
+            --font-en: 'Montserrat', sans-serif;
+            --font-ko: 'Noto Sans KR', sans-serif;
+            --transition-smooth: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+            --transition-theme: background-color 0.8s ease, color 0.5s ease, border-color 0.5s ease, box-shadow 0.5s ease;
+        }
+
+        /* Dark Theme (Default) */
+        :root[data-theme="dark"] {
+            --bg-base: #0f172a;
+            --bg-gradient-start: #131d31;
+            --bg-gradient-end: #0b101b;
+            --navy-pastel: #273549;
+            --navy-light: #1e293b;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --text-dark: #0f172a;
+            --glass-bg: rgba(30, 41, 59, 0.6);
+            --glass-border: rgba(212, 175, 55, 0.2);
+            --glass-shadow: rgba(0, 0, 0, 0.4);
+            --card-hover-border: rgba(212, 175, 55, 0.5);
+            --card-hover-shadow: rgba(212, 175, 55, 0.1);
+            --input-bg: rgba(15, 23, 42, 0.6);
+        }
+
+        /* Light Theme */
+        :root[data-theme="light"] {
+            --bg-base: #f8fafc;
+            --bg-gradient-start: #f1f5f9;
+            --bg-gradient-end: #cbd5e1;
+            --navy-pastel: #e2e8f0;
+            --navy-light: #ffffff;
+            --text-main: #0f172a;
+            --text-muted: #475569;
+            --text-dark: #f8fafc;
+            --glass-bg: rgba(255, 255, 255, 0.75);
+            --glass-border: rgba(212, 175, 55, 0.25);
+            --glass-shadow: rgba(15, 23, 42, 0.08);
+            --card-hover-border: rgba(212, 175, 55, 0.6);
+            --card-hover-shadow: rgba(212, 175, 55, 0.15);
+            --input-bg: rgba(255, 255, 255, 0.9);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            background-color: var(--bg-base);
+            color: var(--text-main);
+            font-family: var(--font-ko);
+            overflow-x: hidden;
+            transition: var(--transition-theme);
+        }
+
+        body {
+            background: linear-gradient(185deg, var(--bg-gradient-start) 0%, var(--bg-gradient-end) 100%);
+            background-attachment: fixed;
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            transition: var(--transition-theme);
+        }
+
+        /* Common Layout & Styles */
+        section {
+            padding: 120px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .section-header {
+            margin-bottom: 60px;
+            text-align: center;
+        }
+
+        .section-title-en {
+            font-family: var(--font-en);
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.3em;
+            background: var(--gold-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .section-title {
+            font-size: 2.4rem;
+            font-weight: 800;
+            position: relative;
+            display: inline-block;
+            transition: var(--transition-theme);
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 40px;
+            height: 3px;
+            background: var(--gold-gradient);
+            margin: 15px auto 0;
+            border-radius: 2px;
+        }
+
+        /* Glassmorphism Card Style */
+        .glass-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            padding: 35px;
+            box-shadow: 0 10px 30px var(--glass-shadow);
+            transition: var(--transition-smooth), var(--transition-theme);
+        }
+
+        .glass-card:hover {
+            border-color: var(--card-hover-border);
+            box-shadow: 0 15px 35px var(--card-hover-shadow);
+            transform: translateY(-8px);
+        }
+
+        /* Scroll-driven Reveal Animation CSS */
+        .reveal {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Sequential delays for child elements */
+        .reveal-delay-1 { transition-delay: 0.1s; }
+        .reveal-delay-2 { transition-delay: 0.2s; }
+        .reveal-delay-3 { transition-delay: 0.3s; }
+
+        /* Header Navigation */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(15, 23, 42, 0.8);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            transition: var(--transition-smooth), var(--transition-theme);
+        }
+
+        :root[data-theme="light"] header {
+            background: rgba(248, 250, 252, 0.8);
+            border-bottom: 1px solid rgba(15, 23, 42, 0.05);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: var(--font-en);
+            font-weight: 800;
+            font-size: 1.4rem;
+            letter-spacing: 0.1em;
+            text-decoration: none;
+            color: var(--text-main);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: var(--transition-theme);
+        }
+
+        .logo span {
+            background: var(--gold-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 25px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            font-weight: 500;
+            transition: var(--transition-smooth), var(--transition-theme);
+            position: relative;
+            padding: 5px 0;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--gold-gradient);
+            transition: var(--transition-smooth);
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: var(--gold-primary);
+        }
+
+        .nav-links a:hover::after,
+        .nav-links a.active::after {
+            width: 100%;
+        }
+
+        /* Dark Mode Toggle Button */
+        .theme-toggle-btn {
+            background: rgba(212, 175, 55, 0.1);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            border-radius: 50%;
+            width: 42px;
+            height: 42px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            color: var(--gold-primary);
+            transition: var(--transition-smooth);
+        }
+
+        .theme-toggle-btn:hover {
+            background: var(--gold-gradient);
+            color: var(--text-dark);
+            box-shadow: 0 0 15px rgba(212, 175, 55, 0.3);
+            transform: scale(1.08);
+        }
+
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--text-main);
+            cursor: pointer;
+        }
+
+        /* Hero Section (Section 1) */
+        #hero {
+            position: relative;
+            overflow: hidden;
+            padding-top: 150px;
+            text-align: center;
+            align-items: center;
+        }
+
+        .hero-decorations {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .circle-blur {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(100px);
+            opacity: 0.15;
+        }
+
+        .circle-blur-1 {
+            top: 20%;
+            left: 10%;
+            width: 300px;
+            height: 300px;
+            background: var(--gold-primary);
+        }
+
+        .circle-blur-2 {
+            bottom: 20%;
+            right: 10%;
+            width: 400px;
+            height: 400px;
+            background: var(--navy-pastel);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 850px;
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 8px 18px;
+            border-radius: 30px;
+            background: rgba(212, 175, 55, 0.1);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            color: var(--gold-primary);
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 30px;
+            animation: pulse 2s infinite;
+        }
+
+        .hero-title {
+            font-size: clamp(2.3rem, 5.5vw, 4rem);
+            line-height: 1.25;
+            font-weight: 900;
+            margin-bottom: 24px;
+            letter-spacing: -0.02em;
+            word-break: keep-all;
+            transition: var(--transition-theme);
+        }
+
+        .hero-title span {
+            background: var(--gold-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-subtitle {
+            font-size: clamp(1.1rem, 2vw, 1.45rem);
+            color: var(--text-muted);
+            margin-bottom: 40px;
+            font-weight: 400;
+            word-break: keep-all;
+            transition: var(--transition-theme);
+        }
+
+        .hero-intro {
+            font-size: 1.1rem;
+            color: var(--text-main);
+            background: rgba(255, 255, 255, 0.03);
+            border-left: 3px solid var(--gold-primary);
+            padding: 22px;
+            border-radius: 0 14px 14px 0;
+            margin: 0 auto 50px;
+            max-width: 720px;
+            text-align: left;
+            line-height: 1.85;
+            box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.2);
+            word-break: keep-all;
+            transition: var(--transition-theme);
+        }
+
+        :root[data-theme="light"] .hero-intro {
+            background: rgba(15, 23, 42, 0.03);
+            box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.05);
+        }
+
+        .cta-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 16px 38px;
+            border-radius: 50px;
+            background: var(--gold-gradient);
+            color: var(--text-dark);
+            text-decoration: none;
+            font-weight: 700;
+            letter-spacing: 0.05em;
+            box-shadow: 0 5px 20px rgba(212, 175, 55, 0.3);
+            transition: var(--transition-smooth);
+            cursor: pointer;
+        }
+
+        .cta-btn:hover {
+            box-shadow: 0 8px 25px rgba(212, 175, 55, 0.5);
+            transform: scale(1.04);
+        }
+
+        /* Vision Section (Section 2) */
+        .vision-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 30px;
+            margin-top: 20px;
+        }
+
+        .vision-main {
+            text-align: center;
+            padding: 40px;
+            background: linear-gradient(135deg, rgba(39, 53, 73, 0.4) 0%, rgba(30, 41, 59, 0.7) 100%);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+        }
+
+        :root[data-theme="light"] .vision-main {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.9) 0%, rgba(226, 232, 240, 0.6) 100%);
+        }
+
+        .vision-main h3 {
+            font-size: 1.2rem;
+            color: var(--gold-primary);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 15px;
+        }
+
+        .vision-main p {
+            font-size: 1.9rem;
+            font-weight: 850;
+            word-break: keep-all;
+            background: var(--gold-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .vision-details {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+        }
+
+        .vision-card {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .vision-card .num {
+            font-family: var(--font-en);
+            font-size: 2.5rem;
+            font-weight: 800;
+            background: var(--gold-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            line-height: 1;
+        }
+
+        .vision-card h4 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--text-main);
+            transition: var(--transition-theme);
+        }
+
+        .vision-card p {
+            color: var(--text-muted);
+            font-size: 1rem;
+            line-height: 1.7;
+            word-break: keep-all;
+            transition: var(--transition-theme);
+        }
+
+        /* Special Featured Project (New Additions) */
+        .featured-project {
+            margin-top: 50px;
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .featured-project-img {
+            border-radius: 16px;
+            overflow: hidden;
+            border: 1px solid var(--glass-border);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+            aspect-ratio: 3/2;
+            background: var(--navy-pastel);
+        }
+
+        .featured-project-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition-smooth);
+        }
+
+        .featured-project:hover .featured-project-img img {
+            transform: scale(1.05);
+        }
+
+        .featured-project-info {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .featured-tag {
+            align-self: flex-start;
+            font-family: var(--font-en);
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            background: var(--gold-gradient);
+            padding: 5px 12px;
+            border-radius: 6px;
+            letter-spacing: 0.05em;
+            box-shadow: 0 4px 10px rgba(212, 175, 55, 0.2);
+        }
+
+        .featured-project-info h3 {
+            font-size: 1.7rem;
+            font-weight: 800;
+            color: var(--text-main);
+            line-height: 1.3;
+            word-break: keep-all;
+            transition: var(--transition-theme);
+        }
+
+        .featured-project-info p {
+            color: var(--text-muted);
+            font-size: 1rem;
+            line-height: 1.75;
+            word-break: keep-all;
+            transition: var(--transition-theme);
+        }
+
+        .featured-metrics {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin-top: 10px;
+        }
+
+        .metric-item {
+            background: rgba(212, 175, 55, 0.08);
+            border: 1px dashed rgba(212, 175, 55, 0.3);
+            border-radius: 10px;
+            padding: 12px 10px;
+            text-align: center;
+        }
+
+        .metric-val {
+            font-family: var(--font-en);
+            font-size: 1.25rem;
+            font-weight: 800;
+            color: var(--gold-primary);
+        }
+
+        .metric-lbl {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            margin-top: 4px;
+            word-break: keep-all;
+        }
+
+        /* Activities Section (Section 3) */
+        .timeline {
+            position: relative;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 2px;
+            background: rgba(212, 175, 55, 0.2);
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -1px;
+        }
+
+        .timeline-item {
+            padding: 10px 40px;
+            position: relative;
+            background-color: inherit;
+            width: 50%;
+        }
+
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            width: 16px;
+            height: 16px;
+            right: -8px;
+            background-color: var(--bg-base);
+            border: 3px solid var(--gold-primary);
+            top: 25px;
+            border-radius: 50%;
+            z-index: 1;
+            transition: var(--transition-smooth);
+        }
+
+        .timeline-item.left {
+            left: 0;
+        }
+
+        .timeline-item.right {
+            left: 50%;
+        }
+
+        .timeline-item.right::after {
+            left: -8px;
+        }
+
+        .timeline-content {
+            position: relative;
+        }
+
+        .timeline-date {
+            font-family: var(--font-en);
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--gold-primary);
+            margin-bottom: 8px;
+        }
+
+        .timeline-content h3 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 12px;
+            color: var(--text-main);
+            word-break: keep-all;
+            transition: var(--transition-theme);
+        }
+
+        .timeline-content p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            margin-bottom: 15px;
+            word-break: keep-all;
+            transition: var(--transition-theme);
+        }
+
+        .timeline-metrics {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(212, 175, 55, 0.08);
+            border: 1px dashed rgba(212, 175, 55, 0.3);
+            padding: 8px 14px;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            color: var(--gold-primary);
+            font-weight: 500;
+        }
+
+        .timeline-item:hover::after {
+            background-color: var(--gold-primary);
+            box-shadow: 0 0 12px var(--gold-primary);
+            transform: scale(1.2);
+        }
+
+        /* Strengths Section (Section 4) */
+        .strengths-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        .strength-card {
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .strength-icon-box {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            background: rgba(212, 175, 55, 0.1);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--gold-primary);
+            margin-bottom: 10px;
+            transition: var(--transition-smooth);
+        }
+
+        .strength-card:hover .strength-icon-box {
+            background: var(--gold-gradient);
+            color: var(--text-dark);
+            box-shadow: 0 0 20px rgba(212, 175, 55, 0.4);
+            transform: rotate(360deg);
+        }
+
+        .strength-card h3 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--text-main);
+            transition: var(--transition-theme);
+        }
+
+        .strength-card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            line-height: 1.6;
+            word-break: keep-all;
+            transition: var(--transition-theme);
+        }
+
+        /* Promise Section (Section 5) */
+        #promise {
+            text-align: center;
+            align-items: center;
+        }
+
+        .promise-container {
+            max-width: 800px;
+            padding: 50px;
+            position: relative;
+            background: linear-gradient(135deg, rgba(39, 53, 73, 0.4) 0%, rgba(15, 23, 42, 0.9) 100%);
+            border: 1px solid var(--glass-border);
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+            transition: var(--transition-theme);
+        }
+
+        :root[data-theme="light"] .promise-container {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.9) 0%, rgba(226, 232, 240, 0.6) 100%);
+        }
+
+        .promise-container::before {
+            content: '“';
+            position: absolute;
+            font-size: 10rem;
+            color: rgba(212, 175, 55, 0.08);
+            font-family: serif;
+            top: -20px;
+            left: 30px;
+            line-height: 1;
+        }
+
+        .promise-text {
+            font-size: clamp(1.1rem, 2vw, 1.4rem);
+            line-height: 1.9;
+            font-weight: 500;
+            margin-bottom: 30px;
+            word-break: keep-all;
+            position: relative;
+            z-index: 1;
+            transition: var(--transition-theme);
+        }
+
+        .promise-signature {
+            font-family: var(--font-en);
+            font-size: 1.1rem;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            color: var(--gold-primary);
+            display: inline-flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .promise-signature span {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+        }
+
+        /* Idea Note Section (Section 6) */
+        .idea-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+        }
+
+        .idea-card {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .idea-badge {
+            display: inline-block;
+            font-family: var(--font-en);
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: var(--gold-primary);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 15px;
+        }
+
+        .idea-card h3 {
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            color: var(--text-main);
+            word-break: keep-all;
+            transition: var(--transition-theme);
+        }
+
+        .idea-card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            line-height: 1.7;
+            word-break: keep-all;
+            transition: var(--transition-theme);
+        }
+
+        .idea-hover-effect {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, transparent 50%, rgba(212, 175, 55, 0.15) 100%);
+            border-bottom-right-radius: 16px;
+            transition: var(--transition-smooth);
+        }
+
+        .idea-card:hover .idea-hover-effect {
+            width: 100px;
+            height: 100px;
+        }
+
+        /* Role Model Section (Section 7) */
+        .rolemodel-container {
+            display: grid;
+            grid-template-columns: 1fr 1.5fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .rolemodel-profile {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .rolemodel-avatar-box {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.2) 0%, rgba(39, 53, 73, 0.5) 100%);
+            border: 3px solid var(--gold-primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+            margin-bottom: 25px;
+            transition: var(--transition-theme);
+        }
+
+        :root[data-theme="light"] .rolemodel-avatar-box {
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.3) 0%, rgba(226, 232, 240, 0.8) 100%);
+        }
+
+        .rolemodel-avatar-box i {
+            color: var(--gold-primary);
+        }
+
+        .rolemodel-profile h3 {
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 5px;
+            color: var(--text-main);
+            transition: var(--transition-theme);
+        }
+
+        .rolemodel-profile p {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            font-weight: 500;
+            transition: var(--transition-theme);
+        }
+
+        .rolemodel-content {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .quote-box {
+            font-size: 1.25rem;
+            line-height: 1.8;
+            font-weight: 500;
+            color: var(--text-main);
+            border-left: 4px solid var(--gold-primary);
+            padding-left: 20px;
+            margin-bottom: 10px;
+            word-break: keep-all;
+            transition: var(--transition-theme);
+        }
+
+        .rolemodel-desc {
+            color: var(--text-muted);
+            font-size: 1rem;
+            line-height: 1.8;
+            word-break: keep-all;
+            transition: var(--transition-theme);
+        }
+
+        /* Section 8: Cheer Message Section (New Additions) */
+        .cheer-container {
+            display: grid;
+            grid-template-columns: 1fr 1.5fr;
+            gap: 40px;
+        }
+
+        .cheer-form-box {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .form-group label {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--gold-primary);
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 14px 18px;
+            border-radius: 12px;
+            background: var(--input-bg);
+            border: 1px solid var(--glass-border);
+            color: var(--text-main);
+            font-family: var(--font-ko);
+            font-size: 0.95rem;
+            outline: none;
+            transition: var(--transition-smooth), var(--transition-theme);
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            border-color: var(--gold-primary);
+            box-shadow: 0 0 10px rgba(212, 175, 55, 0.2);
+        }
+
+        .cheer-submit-btn {
+            background: var(--gold-gradient);
+            color: var(--text-dark);
+            border: none;
+            border-radius: 12px;
+            padding: 15px;
+            font-size: 1rem;
+            font-weight: 700;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            transition: var(--transition-smooth);
+        }
+
+        .cheer-submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(212, 175, 55, 0.4);
+        }
+
+        .cheer-list-box {
+            max-height: 400px;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            padding-right: 10px;
+        }
+
+        /* Custom Scrollbar for Message Box */
+        .cheer-list-box::-webkit-scrollbar {
+            width: 6px;
+        }
+        .cheer-list-box::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.02);
+            border-radius: 10px;
+        }
+        .cheer-list-box::-webkit-scrollbar-thumb {
+            background: rgba(212, 175, 55, 0.3);
+            border-radius: 10px;
+        }
+        .cheer-list-box::-webkit-scrollbar-thumb:hover {
+            background: var(--gold-primary);
+        }
+
+        .cheer-card {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            padding: 20px;
+            position: relative;
+            animation: slideInUp 0.4s ease;
+        }
+
+        :root[data-theme="light"] .cheer-card {
+            background: rgba(15, 23, 42, 0.02);
+            border: 1px solid rgba(15, 23, 42, 0.05);
+        }
+
+        .cheer-card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 8px;
+        }
+
+        .cheer-name {
+            font-weight: 700;
+            color: var(--gold-primary);
+            font-size: 0.95rem;
+        }
+
+        .cheer-date {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            font-family: var(--font-en);
+        }
+
+        .cheer-content {
+            font-size: 0.95rem;
+            color: var(--text-main);
+            word-break: break-all;
+        }
+
+        .cheer-delete-btn {
+            background: none;
+            border: none;
+            color: var(--text-muted);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition-smooth);
+        }
+
+        .cheer-delete-btn:hover {
+            color: #ef4444;
+        }
+
+        .empty-cheer {
+            text-align: center;
+            color: var(--text-muted);
+            padding: 40px 0;
+            font-size: 0.95rem;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #080c14;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 40px 20px;
+            text-align: center;
+            transition: var(--transition-theme);
+        }
+
+        :root[data-theme="light"] footer {
+            background-color: #e2e8f0;
+            border-top: 1px solid rgba(15, 23, 42, 0.05);
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .footer-logo {
+            font-family: var(--font-en);
+            font-weight: 700;
+            font-size: 1.2rem;
+            letter-spacing: 0.1em;
+            color: var(--text-main);
+            text-decoration: none;
+            transition: var(--transition-theme);
+        }
+
+        .footer-logo span {
+            color: var(--gold-primary);
+        }
+
+        .footer-copy {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            transition: var(--transition-theme);
+        }
+
+        /* Keyframes */
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.4);
+            }
+            70% {
+                box-shadow: 0 0 0 10px rgba(212, 175, 55, 0);
+            }
+            100% {
+                box-shadow: 0 0 0 0 rgba(212, 175, 55, 0);
+            }
+        }
+
+        @keyframes slideInUp {
+            from {
+                opacity: 0;
+                transform: translateY(15px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive Web Design (Media Queries) */
+        @media (max-width: 1024px) {
+            section {
+                padding: 100px 20px;
+            }
+            
+            .featured-project {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+            .cheer-container {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 80px;
+                left: 0;
+                width: 100%;
+                background: rgba(15, 23, 42, 0.95);
+                backdrop-filter: blur(12px);
+                border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+                padding: 30px;
+                gap: 20px;
+                text-align: center;
+                box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            }
+
+            :root[data-theme="light"] .nav-links {
+                background: rgba(248, 250, 252, 0.98);
+                border-bottom: 1px solid rgba(15, 23, 42, 0.05);
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+
+            /* Timeline Mobile Style */
+            .timeline::after {
+                left: 31px;
+            }
+
+            .timeline-item {
+                width: 100%;
+                padding-left: 70px;
+                padding-right: 25px;
+            }
+
+            .timeline-item.right {
+                left: 0;
+            }
+
+            .timeline-item::after {
+                left: 23px;
+                right: auto;
+            }
+
+            .timeline-item.right::after {
+                left: 23px;
+            }
+
+            .strengths-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .idea-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .vision-details {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .rolemodel-container {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .rolemodel-avatar-box {
+                width: 150px;
+                height: 150px;
+            }
+
+            .quote-box {
+                border-left: none;
+                border-top: 2px solid var(--gold-primary);
+                border-bottom: 2px solid var(--gold-primary);
+                padding: 15px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header Navigation -->
+    <header>
+        <div class="nav-container">
+            <a href="#hero" class="logo">
+                <i data-lucide="compass" style="color: var(--gold-primary);"></i>
+                SERIN<span>.PORTFOLIO</span>
+            </a>
+            <div class="nav-right">
+                <ul class="nav-links">
+                    <li><a href="#hero" class="active">소개</a></li>
+                    <li><a href="#vision">목표</a></li>
+                    <li><a href="#activities">활동</a></li>
+                    <li><a href="#strengths">강점</a></li>
+                    <li><a href="#promise">다짐</a></li>
+                    <li><a href="#ideas">아이디어</a></li>
+                    <li><a href="#rolemodel">롤모델</a></li>
+                    <li><a href="#cheer">응원</a></li>
+                </ul>
+                <!-- Theme Toggle Button -->
+                <button class="theme-toggle-btn" aria-label="테마 전환">
+                    <i data-lucide="sun" class="sun-icon" style="display: none;"></i>
+                    <i data-lucide="moon" class="moon-icon"></i>
+                </button>
+                <button class="menu-toggle" aria-label="메뉴 열기">
+                    <i data-lucide="menu" size="28"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Section 1: Hero Section -->
+    <section id="hero">
+        <div class="hero-decorations">
+            <div class="circle-blur circle-blur-1"></div>
+            <div class="circle-blur circle-blur-2"></div>
+        </div>
+        <div class="hero-content reveal">
+            <div class="badge">
+                <i data-lucide="sparkles" size="16"></i> Future Event Planner & Director
+            </div>
+            <h1 class="hero-title">
+                사람들의 마음에<br><span>닿는 순간</span>을 설계합니다.
+            </h1>
+            <p class="hero-subtitle">경영학과 행사 기획자를 꿈꾸는 고등학교 2학년, 김세린의 포트폴리오</p>
+            <div class="hero-intro">
+                "행사는 단순히 모이는 자리가 아닌, 사람들의 가치와 감정이 교차하는 하나의 무대라고 믿습니다. 경영학적 시각으로 효율을 계산하고, 기획자의 감성으로 감동을 더하는 인재가 되겠습니다."
+            </div>
+            <a href="#vision" class="cta-btn">
+                포트폴리오 둘러보기
+                <i data-lucide="arrow-down" size="18"></i>
+            </a>
+        </div>
+    </section>
+
+    <!-- Section 2: Career Vision -->
+    <section id="vision">
+        <div class="section-header reveal">
+            <p class="section-title-en">Career Vision</p>
+            <h2 class="section-title">진로 목표</h2>
+        </div>
+        <div class="vision-grid">
+            <div class="glass-card vision-main reveal">
+                <h3>Core Vision</h3>
+                <p>사람과 사회를 연결하는 경험 디자이너</p>
+            </div>
+            <div class="vision-details">
+                <div class="glass-card vision-card reveal reveal-delay-1">
+                    <span class="num">01</span>
+                    <h4>대학 진학 및 학문적 기초</h4>
+                    <p>사람과 자원을 효율적으로 관리하는 학문인 '경영학'을 전공하여 마케팅, 인사관리, 재무적 관점을 고루 갖춘 전문 기획자로 성장하기.</p>
+                </div>
+                <div class="glass-card vision-card reveal reveal-delay-2">
+                    <span class="num">02</span>
+                    <h4>궁극적 지향점</h4>
+                    <p>ESG(친환경·사회적 책임) 가치를 담아내는 지속 가능한 글로벌 문화 콘텐츠 기획자가 되는 것입니다.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 3: Key Activities & Project Showcase -->
+    <section id="activities">
+        <div class="section-header reveal">
+            <p class="section-title-en">Key Activities</p>
+            <h2 class="section-title">관련 활동</h2>
+        </div>
+
+        <!-- Featured Project: Pop-up Store (Requested Feature 4) -->
+        <div class="glass-card featured-project reveal" style="margin-bottom: 70px;">
+            <div class="featured-project-img">
+                <img src="images/popup.jpg" onerror="this.src='file:///C:/Users/COMTREE/.gemini/antigravity/brain/48f758fe-c99b-4331-9e21-dd411b5c8706/popup_project_showcase_1783561867853.jpg'" alt="Green Wave 팝업 프로젝트 현장 이미지">
+            </div>
+            <div class="featured-project-info">
+                <span class="featured-tag">Representative Project</span>
+                <h3>성수동 ESG 청소년 팝업 스토어 'Green Wave' 총괄 기획 & 운영</h3>
+                <p>친환경 업사이클링 브랜드 3곳과의 성공적인 콜라보레이션을 성사시켰습니다. 성수동 복합문화공간을 대여해 3일간 팝업스토어를 운영하며 브랜드 스토리텔링 부스 설계, 엑셀을 활용한 예산 집행 관리, 공간 인테리어 디렉팅과 친환경 굿즈 교환 이벤트를 이끌었습니다.</p>
+                
+                <div class="featured-metrics">
+                    <div class="metric-item">
+                        <div class="metric-val">1,200+</div>
+                        <div class="metric-lbl">누적 방문객</div>
+                    </div>
+                    <div class="metric-item">
+                        <div class="metric-val">800명</div>
+                        <div class="metric-lbl">ESG 실천 약속</div>
+                    </div>
+                    <div class="metric-item">
+                        <div class="metric-val">450만원</div>
+                        <div class="metric-lbl">수익금 기부</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="timeline">
+            <!-- Activity 1 -->
+            <div class="timeline-item left reveal">
+                <div class="glass-card timeline-content">
+                    <div class="timeline-date">2025.10</div>
+                    <h3>교내 축제 기획단 '라온' 총괄 팀장</h3>
+                    <p>축제 테마 기획 및 15개 동아리 부스 배치 동선 설계. 한정된 학생회 예산을 효율적으로 분배하고 타임테이블 조율을 진행하며 실무적인 자원 관리 경험을 쌓았습니다.</p>
+                    <div class="timeline-metrics">
+                        <i data-lucide="trending-up" size="16"></i>
+                        동선 병목 30% 개선 | 만족도 92% 달성
+                    </div>
+                </div>
+            </div>
+            <!-- Activity 2 -->
+            <div class="timeline-item right reveal">
+                <div class="glass-card timeline-content">
+                    <div class="timeline-date">2025.05 - 2025.08</div>
+                    <h3>경영 동아리 모의 창업 및 플리마켓</h3>
+                    <p>'업사이클링 제품 판매'를 주제로 한 모의 비즈니스 모델 구축. 마케팅 전략(SNS 홍보 카드뉴스 제작) 수립 및 당일 현장 판매 부스를 직접 운영하였습니다.</p>
+                    <div class="timeline-metrics">
+                        <i data-lucide="award" size="16"></i>
+                        준비 수량 완판 | 수익금 기부
+                    </div>
+                </div>
+            </div>
+            <!-- Activity 3 -->
+            <div class="timeline-item left reveal">
+                <div class="glass-card timeline-content">
+                    <div class="timeline-date">2024.08</div>
+                    <h3>청소년 지역 문화 축제 자원봉사 및 모니터링</h3>
+                    <p>지역 청소년 문화제 스태프로 참여하여 관객 안내 및 안전 관리를 지원하였으며, 행사 종료 후 기획자 관점에서 행사의 장단점과 개선점을 정리한 피드백 보고서를 자발적으로 작성했습니다.</p>
+                    <div class="timeline-metrics">
+                        <i data-lucide="check-circle" size="16"></i>
+                        안전 안내 수행 | 모니터링 보고서 작성
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 4: Strengths -->
+    <section id="strengths">
+        <div class="section-header reveal">
+            <p class="section-title-en">Core Strengths</p>
+            <h2 class="section-title">나의 강점</h2>
+        </div>
+        <div class="strengths-grid">
+            <!-- Strength 1 -->
+            <div class="glass-card strength-card reveal">
+                <div class="strength-icon-box">
+                    <i data-lucide="calculator" size="32"></i>
+                </div>
+                <h3>1. 꼼꼼한 예산 및 자원 관리</h3>
+                <p>계획 단계에서 누락되는 비용이 없도록 꼼꼼하게 예산안 및 자원 계획 엑셀 시트를 작성하고 조율하는 치밀함을 가지고 있습니다.</p>
+            </div>
+            <!-- Strength 2 -->
+            <div class="glass-card strength-card reveal reveal-delay-1">
+                <div class="strength-icon-box">
+                    <i data-lucide="users" size="32"></i>
+                </div>
+                <h3>2. 조율과 공감의 커뮤니케이션</h3>
+                <p>축제와 플리마켓 기획 중 발생한 다양한 이해관계자 간의 갈등 상황에서, 각자의 입장을 경청하고 윈-윈(Win-Win)할 수 있는 조율 능력이 뛰어납니다.</p>
+            </div>
+            <!-- Strength 3 -->
+            <div class="glass-card strength-card reveal reveal-delay-2">
+                <div class="strength-icon-box">
+                    <i data-lucide="zap" size="32"></i>
+                </div>
+                <h3>3. 돌발 상황 대처 능력</h3>
+                <p>행사 당일 날씨 변화나 하드웨어 장애 등의 예상치 못한 긴급한 변수가 생기더라도 당황하지 않고 미리 준비해 둔 Plan B를 유연하게 실행합니다.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 5: My Promise -->
+    <section id="promise">
+        <div class="section-header reveal">
+            <p class="section-title-en">My Promise</p>
+            <h2 class="section-title">나의 다짐</h2>
+        </div>
+        <div class="promise-container reveal">
+            <p class="promise-text">
+                "완벽한 기획서보다 더 중요한 것은 현장에서 발로 뛰며 참가자들과 눈을 맞추는 것이라 생각합니다. 고등학교 생활 동안 쌓은 작은 경험의 씨앗들을 경영학이라는 자양분을 통해 멋진 꽃으로 피워내겠습니다. 사람들에게 평생 기억에 남을 단 하루를 선물하는 기획자가 되겠습니다."
+            </p>
+            <div class="promise-signature">
+                KIM SE RIN
+                <span>Future Event Director</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 6: Idea Note -->
+    <section id="ideas">
+        <div class="section-header reveal">
+            <p class="section-title-en">Idea Sandbox</p>
+            <h2 class="section-title">아이디어 노트</h2>
+        </div>
+        <div class="idea-grid">
+            <!-- Idea 1 -->
+            <div class="glass-card idea-card reveal">
+                <span class="idea-badge">Idea 01</span>
+                <h3>'쓰레기 없는' 제로 웨이스트 음악 페스티벌</h3>
+                <p>일회용 컵 대신 다회용기 대여 보증금제를 도입하고, 지출과 인증이 결합된 모바일 NFC 팔찌를 활용하여 행사 전반에 종이와 플라스틱 쓰레기를 최소화하는 지속 가능한 환경 축제를 구상하고 있습니다.</p>
+                <div class="idea-hover-effect"></div>
+            </div>
+            <!-- Idea 2 -->
+            <div class="glass-card idea-card reveal reveal-delay-1">
+                <span class="idea-badge">Idea 02</span>
+                <h3>'동네 한 바퀴' 세대 공감 플리마켓</h3>
+                <p>청소년 크리에이터들의 독창적인 굿즈와 동네 소상공인의 먹거리를 연결하여 지역 상권을 상생시키고, 골목 투어 스탬프 랠리를 융합하여 세대 불문 주민 소통을 유도하는 문화 행사입니다.</p>
+                <div class="idea-hover-effect"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 7: Role Model -->
+    <section id="rolemodel">
+        <div class="section-header reveal">
+            <p class="section-title-en">Role Model</p>
+            <h2 class="section-title">롤모델</h2>
+        </div>
+        <div class="glass-card rolemodel-container reveal">
+            <div class="rolemodel-profile">
+                <div class="rolemodel-avatar-box">
+                    <i data-lucide="user" size="80"></i>
+                </div>
+                <h3>크리스 앤더슨</h3>
+                <p>Chris Anderson | TED 콘퍼런스 대표</p>
+            </div>
+            <div class="rolemodel-content">
+                <div class="quote-box">
+                    "Ideas Worth Spreading (공유할 만한 가치가 있는 아이디어)"
+                </div>
+                <p class="rolemodel-desc">
+                    단순히 일방적으로 듣고 끝나는 일반적인 강연을 넘어, 전 세계 사람들이 모여 새로운 지식과 지혜를 토론하고 축제처럼 즐기는 TED 플랫폼을 구축했습니다. 그의 경영학적인 안목과 가치 중심의 경험 설계 철학을 동경하며, 저 또한 사람들의 머리와 가슴을 동시에 자극할 수 있는 융합적 가치를 나누는 행사 기획자가 되고자 합니다.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 8: Cheer Message Section (Requested Feature 3) -->
+    <section id="cheer">
+        <div class="section-header reveal">
+            <p class="section-title-en">Cheer Wall</p>
+            <h2 class="section-title">응원 한마디</h2>
+        </div>
+        <div class="glass-card cheer-container reveal">
+            <!-- Message Write Form -->
+            <div class="cheer-form-box">
+                <div class="form-group">
+                    <label for="cheer-name">작성자 이름</label>
+                    <input type="text" id="cheer-name" placeholder="이름을 입력해 주세요." required maxlength="10">
+                </div>
+                <div class="form-group">
+                    <label for="cheer-message">응원 메시지</label>
+                    <textarea id="cheer-message" rows="4" placeholder="세린 학생의 꿈을 응원하는 한마디를 적어주세요!" required maxlength="150"></textarea>
+                </div>
+                <button type="button" class="cheer-submit-btn" id="submit-cheer">
+                    <i data-lucide="send" size="18"></i>
+                    응원 전송하기
+                </button>
+            </div>
+
+            <!-- Message List Showcase -->
+            <div class="cheer-list-box" id="cheer-list">
+                <!-- Javascript will load messages here -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <a href="#hero" class="footer-logo">
+                SERIN<span>.PORTFOLIO</span>
+            </a>
+            <p class="footer-copy">© 2026 Kim Se Rin. All Rights Reserved. Designed for Event Planning & Business Management Career Goal.</p>
+        </div>
+    </footer>
+
+    <!-- Interactive Scripts -->
+    <script>
+        // Initialize Lucide Icons
+        lucide.createIcons();
+
+        // 1. Dark/Light Theme Toggle (Requested Feature 1)
+        const themeToggleBtn = document.querySelector('.theme-toggle-btn');
+        const sunIcon = document.querySelector('.sun-icon');
+        const moonIcon = document.querySelector('.moon-icon');
+        
+        // Check local storage or default to dark
+        const currentTheme = localStorage.getItem('theme') || 'dark';
+        document.documentElement.setAttribute('data-theme', currentTheme);
+        updateThemeUI(currentTheme);
+
+        themeToggleBtn.addEventListener('click', () => {
+            let theme = document.documentElement.getAttribute('data-theme');
+            let newTheme = theme === 'dark' ? 'light' : 'dark';
+            
+            document.documentElement.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+            updateThemeUI(newTheme);
+        });
+
+        function updateThemeUI(theme) {
+            if (theme === 'dark') {
+                sunIcon.style.display = 'none';
+                moonIcon.style.display = 'block';
+            } else {
+                sunIcon.style.display = 'block';
+                moonIcon.style.display = 'none';
+            }
+        }
+
+        // Mobile Menu Toggle
+        const menuToggle = document.querySelector('.menu-toggle');
+        const navLinksList = document.querySelector('.nav-links');
+        const menuIcon = menuToggle.querySelector('i');
+
+        menuToggle.addEventListener('click', () => {
+            navLinksList.classList.toggle('active');
+            if (navLinksList.classList.contains('active')) {
+                menuIcon.setAttribute('data-lucide', 'x');
+            } else {
+                menuIcon.setAttribute('data-lucide', 'menu');
+            }
+            lucide.createIcons();
+        });
+
+        // Close mobile menu on link click
+        const navLinks = document.querySelectorAll('.nav-links a');
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                navLinksList.classList.remove('active');
+                menuIcon.setAttribute('data-lucide', 'menu');
+                lucide.createIcons();
+            });
+        });
+
+        // 2. Scroll Reveal Animation (Requested Feature 2)
+        const revealElements = document.querySelectorAll('.reveal');
+        const sections = document.querySelectorAll('section');
+
+        const observerOptions = {
+            root: null,
+            threshold: 0.1, // Trigger when 10% of the element is visible
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const revealObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                    // Once visible, no need to keep observing
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        revealElements.forEach(el => {
+            revealObserver.observe(el);
+        });
+
+        // Active Link Indicator and Header Padding change on Scroll
+        const header = document.querySelector('header');
+        window.addEventListener('scroll', () => {
+            const scrollPos = window.scrollY + 180;
+
+            // Nav link highlight
+            sections.forEach(section => {
+                const top = section.offsetTop;
+                const height = section.offsetHeight;
+                const id = section.getAttribute('id');
+
+                if (scrollPos >= top && scrollPos < top + height) {
+                    navLinks.forEach(link => {
+                        link.classList.remove('active');
+                        if (link.getAttribute('href') === `#${id}`) {
+                            link.classList.add('active');
+                        }
+                    });
+                }
+            });
+
+            // Header state change
+            if (window.scrollY > 50) {
+                header.style.padding = '12px 20px';
+                header.style.boxShadow = '0 10px 30px rgba(0, 0, 0, 0.15)';
+            } else {
+                header.style.padding = '20px';
+                header.style.boxShadow = 'none';
+            }
+        });
+
+        // 3. Cheer Message Manager (Requested Feature 3)
+        const cheerNameInput = document.getElementById('cheer-name');
+        const cheerMessageInput = document.getElementById('cheer-message');
+        const submitCheerBtn = document.getElementById('submit-cheer');
+        const cheerListBox = document.getElementById('cheer-list');
+
+        let cheerMessages = JSON.parse(localStorage.getItem('cheerMessages')) || [
+            { id: 1, name: '지나가는 선배', message: '행사 기획자는 체력과 꼼꼼함이 제일 중요한데, 고2 벌써 준비가 탄탄하네요! 꼭 멋진 대학 후배로 만나요!', date: '2026.07.08' },
+            { id: 2, name: '동아리 멘토', message: '성수동 팝업 축제 때 정말 수고 많으셨어요. 세린이의 번뜩이는 현장 조율 능력이 빛나더라고요. 응원합니다!', date: '2026.07.09' }
+        ];
+
+        function renderCheers() {
+            cheerListBox.innerHTML = '';
+            if (cheerMessages.length === 0) {
+                cheerListBox.innerHTML = '<div class="empty-cheer">첫 응원 메시지의 주인공이 되어주세요! ✨</div>';
+                return;
+            }
+
+            cheerMessages.slice().reverse().forEach(cheer => {
+                const card = document.createElement('div');
+                card.className = 'cheer-card';
+                card.innerHTML = `
+                    <div class="cheer-card-header">
+                        <span class="cheer-name">${escapeHtml(cheer.name)}</span>
+                        <div style="display: flex; align-items: center; gap: 10px;">
+                            <span class="cheer-date">${cheer.date}</span>
+                            <button class="cheer-delete-btn" onclick="deleteCheer(${cheer.id})" aria-label="메시지 삭제">
+                                <i data-lucide="trash-2" size="14"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="cheer-content">${escapeHtml(cheer.message).replace(/\n/g, '<br>')}</div>
+                `;
+                cheerListBox.appendChild(card);
+            });
+            lucide.createIcons();
+        }
+
+        function escapeHtml(unsafe) {
+            return unsafe
+                .replace(/&/g, "&amp;")
+                .replace(/</g, "&lt;")
+                .replace(/>/g, "&gt;")
+                .replace(/"/g, "&quot;")
+                .replace(/'/g, "&#039;");
+        }
+
+        submitCheerBtn.addEventListener('click', () => {
+            const name = cheerNameInput.value.trim();
+            const message = cheerMessageInput.value.trim();
+
+            if (!name || !message) {
+                alert('이름과 메시지를 모두 입력해 주세요!');
+                return;
+            }
+
+            const today = new Date();
+            const dateStr = `${today.getFullYear()}.${String(today.getMonth() + 1).padStart(2, '0')}.${String(today.getDate()).padStart(2, '0')}`;
+
+            const newCheer = {
+                id: Date.now(),
+                name: name,
+                message: message,
+                date: dateStr
+            };
+
+            cheerMessages.push(newCheer);
+            localStorage.setItem('cheerMessages', JSON.stringify(cheerMessages));
+            
+            // Reset input values
+            cheerNameInput.value = '';
+            cheerMessageInput.value = '';
+            
+            renderCheers();
+        });
+
+        window.deleteCheer = function(id) {
+            if(confirm('이 응원 메시지를 삭제하시겠습니까?')) {
+                cheerMessages = cheerMessages.filter(msg => msg.id !== id);
+                localStorage.setItem('cheerMessages', JSON.stringify(cheerMessages));
+                renderCheers();
+            }
+        };
+
+        // Initialize Cheer Wall on load
+        renderCheers();
+    </script>
+</body>
+</html>
